@@ -21,3 +21,4 @@ D:\dotnet\obj\Debug\net9.0\refint\dotnet.dll
 D:\dotnet\obj\Debug\net9.0\dotnet.pdb
 D:\dotnet\obj\Debug\net9.0\dotnet.genruntimeconfig.cache
 D:\dotnet\obj\Debug\net9.0\ref\dotnet.dll
+D:\dotnet\obj\Debug\net9.0\dotnet.sourcelink.json
