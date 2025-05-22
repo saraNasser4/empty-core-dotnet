@@ -52,6 +52,9 @@ List<BookDto> books = [
     ),
 ];
 
+app.MapGet("/books", () => books);
+app.MapGet("/books/{id}", (int id) => books.Find(book => book.Id == id));
+
 app.MapGet("/", () => "Hello World!");
 app.MapGet("/sara", () => "Hello sara!");
 
