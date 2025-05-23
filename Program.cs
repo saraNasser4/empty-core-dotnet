@@ -3,6 +3,8 @@ using dotnet.Dtos;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
+const string GetBookEndpointName = "GetBook";
+
 List<BookDto> books = [
     new (
         1,
@@ -52,8 +54,25 @@ List<BookDto> books = [
     ),
 ];
 
+// GET
 app.MapGet("/books", () => books);
-app.MapGet("/books/{id}", (int id) => books.Find(book => book.Id == id));
+app.MapGet("/books/{id}", (int id) => books.Find(book => book.Id == id)).WithName(GetBookEndpointName);
+
+// POSt
+app.MapPost("/books", (CreateBookDto newBook) =>
+{
+    BookDto book = new(
+        books.Count + 1,
+        newBook.Name,
+        newBook.Genre,
+        newBook.Price,
+        newBook.ReleaseDate
+    );
+
+    books.Add(book);
+
+    return Results.CreatedAtRoute(GetBookEndpointName, new { id = book.Id}, book);
+});
 
 app.MapGet("/", () => "Hello World!");
 app.MapGet("/sara", () => "Hello sara!");
