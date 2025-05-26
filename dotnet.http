@@ -12,7 +12,7 @@ Content-Type: application/json
     "releaseDate": "2014-09-16"
 }
 ###
-PUT http://localhost:5134/books/2
+PUT http://localhost:5134/books/12
 Content-Type: application/json
 
 {

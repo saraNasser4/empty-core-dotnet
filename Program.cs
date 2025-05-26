@@ -60,10 +60,10 @@ app.MapGet("/books/{id}", (int id) =>
 {
     BookDto? book = books.Find(book => book.Id == id);
     return book is null ? Results.NotFound() : Results.Ok(book);
-    
+
 }).WithName(GetBookEndpointName);
 
-// POSt
+// POST
 app.MapPost("/books", (CreateBookDto newBook) =>
 {
     BookDto book = new(
@@ -83,6 +83,11 @@ app.MapPost("/books", (CreateBookDto newBook) =>
 app.MapPut("/books/{id}", (int id, UpdateBookDto updatedBook) =>
 {
     var index = books.FindIndex(book => book.Id == id);
+    if (index == -1)
+    {
+        return Results.NotFound();
+    }
+
     books[index] = new BookDto(
         id,
         updatedBook.Name,
