@@ -75,7 +75,7 @@ app.MapPost("/books", (CreateBookDto newBook) =>
 });
 
 // PUT
-app.MapPut("/books/{id}", (int id, UpdateBookDto updatedBook)=>
+app.MapPut("/books/{id}", (int id, UpdateBookDto updatedBook) =>
 {
     var index = books.FindIndex(book => book.Id == id);
     books[index] = new BookDto(
@@ -86,6 +86,13 @@ app.MapPut("/books/{id}", (int id, UpdateBookDto updatedBook)=>
         updatedBook.ReleaseDate
     );
 
+    return Results.NoContent();
+});
+
+// DELETE
+app.MapDelete("/books/{id}", (int id)=>
+{
+    books.RemoveAll(book => book.Id == id);
     return Results.NoContent();
 });
 
