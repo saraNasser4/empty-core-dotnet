@@ -11,4 +11,13 @@ Content-Type: application/json
     "price": 19.22,
     "releaseDate": "2014-09-16"
 }
+###
+PUT http://localhost:5134/books/2
+Content-Type: application/json
 
+{
+    "name": "F*S",
+    "genre": "Business and revolution",
+    "price": 0.22,
+    "releaseDate": "1911-09-17"
+}
