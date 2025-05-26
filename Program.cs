@@ -56,7 +56,12 @@ List<BookDto> books = [
 
 // GET
 app.MapGet("/books", () => books);
-app.MapGet("/books/{id}", (int id) => books.Find(book => book.Id == id)).WithName(GetBookEndpointName);
+app.MapGet("/books/{id}", (int id) =>
+{
+    BookDto? book = books.Find(book => book.Id == id);
+    return book is null ? Results.NotFound() : Results.Ok(book);
+}
+).WithName(GetBookEndpointName);
 
 // POSt
 app.MapPost("/books", (CreateBookDto newBook) =>
