@@ -1,6 +1,6 @@
 GET http://localhost:5134/books
 ###
-GET http://localhost:5134/books/3
+GET http://localhost:5134/books/13
 ###
 POST http://localhost:5134/books/
 Content-Type: application/json
