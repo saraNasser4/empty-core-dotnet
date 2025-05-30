@@ -1,7 +1,11 @@
+using dotnet.Data;
 using dotnet.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
+
+var connectionString = builder.Configuration.GetConnectionString("BookCon");
+builder.Services.AddSqlite<BookContext>(connectionString);
 
 app.MapBooksEndpoints();
 
